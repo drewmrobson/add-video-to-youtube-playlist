@@ -1,5 +1,5 @@
 # add-video-to-youtube-playlist
-Add video(s) to YouTube Playlists from your YouTube Subscriptions
+Add video(s) to YouTube Playlists from your YouTube Subscriptions.
 
 # Overview
 
@@ -10,11 +10,11 @@ I'm a big consumer of YouTube, and found myself manually adding videos from my s
 In order to run the solution, you will need two things.
 
 1. A credentials file in `C:/Source/credentials.json` for your YouTube API account.
-2. A channels file in `C:/Source/channels.json` listing your subscriptions and the corresponding target playlists.
+2. A channels file in `C:/Source/channels.json` listing your subscriptions and thei corresponding target playlists.
 
 ## Credentials file
 
-Here's how to get your credentials file [TODO]
+Follow [this guide](https://developers.google.com/workspace/guides/create-credentials#service-account) to create Service account credentials. Save this file as `C:/Source/credentials.json`.
 
 ## Channels file 
 
