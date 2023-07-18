@@ -10,7 +10,7 @@ I'm a big consumer of YouTube, and found myself manually adding videos from my s
 In order to run the solution, you will need two things.
 
 1. A credentials file in `C:/Source/credentials.json` for your YouTube API account.
-2. A channels file in `C:/Source/channels.json` listing your subscriptions and thei corresponding target playlists.
+2. A channels file in `C:/Source/channels.json` listing your subscriptions and their corresponding target playlists.
 
 Then follow these steps:
 
