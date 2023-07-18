@@ -53,4 +53,6 @@ Example:
   }
 ]
 ```
-In the example above, the most recent 10 videos from the channel `Fireship` will be added to the playlist `Tech`. Save this file as `C:/Source/channels.json`.
+In the example above, the 10 most recent videos from the channel `Fireship` will be added to the playlist `Tech`, the 10 most recent videos from the channel `Beyond Fireship` will be added to the playlist `Tech`, and the 10 most recent videos from the channel `Tiago Catarino` will be added to the playlist `LEGO`. 
+
+Save this file as `C:/Source/channels.json`.
