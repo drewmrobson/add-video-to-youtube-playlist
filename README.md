@@ -12,9 +12,15 @@ In order to run the solution, you will need two things.
 1. A credentials file in `C:/Source/credentials.json` for your YouTube API account.
 2. A channels file in `C:/Source/channels.json` listing your subscriptions and thei corresponding target playlists.
 
+Then follow these steps:
+
+1. `git clone https://github.com/drewmrobson/add-video-to-youtube-playlist.git`
+2. `cd add-video-to-youtube-playlist`
+3. `dotnet run`
+
 ## Credentials file
 
-Follow [this guide](https://developers.google.com/workspace/guides/create-credentials#service-account) to create Service account credentials. Save this file as `C:/Source/credentials.json`.
+Follow [this guide](https://developers.google.com/workspace/guides/create-credentials#service-account) to create service account credentials. Save this file as `C:/Source/credentials.json`.
 
 ## Channels file 
 
@@ -47,4 +53,4 @@ Example:
   }
 ]
 ```
-In the example above, the most recent 10 videos from the channel `Fireship` will be added to the playlist `Tech`.
+In the example above, the most recent 10 videos from the channel `Fireship` will be added to the playlist `Tech`. Save this file as `C:/Source/channels.json`.
