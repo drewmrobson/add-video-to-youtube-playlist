@@ -45,35 +45,35 @@ namespace add_video_to_youtube_playlist
 
         internal async Task ExecuteAsync(IEnumerable<Channel> channels)
         {
-            // 1. Get all subscriptions
-            var channelNames = channels.Select(x => x.Name).ToArray();
-            var subscriptions = await GetSubscriptionsAsync(channelNames);
-
             foreach (var channel in channels)
             {
-                var channelName = channel.Name;
                 var playlistName = channel.Playlist;
-
-                Console.WriteLine($"Adding {channelName} to {playlistName}");
-
-                // 2. Get the relevant playlist
                 var playlist = await GetPlaylistIdByTitleAsync(playlistName);
-
-                // 3. Get videos from channel
-                var subscription = subscriptions.FirstOrDefault(x => x.Snippet.Title == channelName);
-                if (subscription == null)
-                {
-                    Console.WriteLine($"0 Videos for {channelName}");
-                    continue;
-                }
-
-                var videos = await GetVideoIdsByChannelIdAsync(subscription.Snippet.ResourceId.ChannelId, channel.MaxResults);
+                var youTubeChannel = await GetChannelAsync(channel.Id);
+                var videos = await GetVideoIdsByChannelIdAsync(youTubeChannel.Id, channel.MaxResults);
                 foreach (var video in videos)
                 {
-                    // 4. Add video to playlist
                     await AddVideoToPlaylistAsync(video, playlist, playlistName);
                 }
             }
+        }
+
+        internal async Task<Google.Apis.YouTube.v3.Data.Channel> GetChannelAsync(string channelId)
+        {
+            Console.WriteLine($"Retrieving channel {channelId}");
+
+            var request = _youtubeService.Channels.List("id,snippet");
+            request.MaxResults = MaxResults;
+            request.Id = channelId;
+            var response = await request.ExecuteAsync();
+
+            var channel = response.Items.SingleOrDefault();
+            if (channel != null)
+            {
+                return channel;
+            }
+
+            throw new Exception("Channel not found");
         }
 
         /// <summary>
@@ -97,43 +97,6 @@ namespace add_video_to_youtube_playlist
             }
 
             throw new Exception("Playlist not found");
-        }
-
-        /// <summary>
-        /// Get all subscriptions for the current user
-        /// </summary>
-        internal async Task<IList<Subscription>> GetSubscriptionsAsync(string[] channels)
-        {
-            Console.WriteLine("Retrieving subscriptions");
-
-            List<Subscription> result = new List<Subscription>();
-
-            string nextpagetoken = " ";
-            while (nextpagetoken != null)
-            {
-                var subscriptionsListRequest = _youtubeService.Subscriptions.List("snippet,contentDetails");
-                //subscriptionsListRequest.ChannelId = userId;
-                subscriptionsListRequest.Mine = true;
-                subscriptionsListRequest.MaxResults = MaxResults;
-                subscriptionsListRequest.PageToken = nextpagetoken;
-                subscriptionsListRequest.Order = SubscriptionsResource.ListRequest.OrderEnum.Unread;
-                var subscriptionsListResponse = await subscriptionsListRequest.ExecuteAsync();
-
-                foreach (var subscription in subscriptionsListResponse.Items)
-                {
-                    foreach (var channelList in channels)
-                    {
-                        if (channelList.Contains(subscription.Snippet.Title))
-                        {
-                            result.Add(subscription);
-                        }
-                    }
-                }
-
-                nextpagetoken = subscriptionsListResponse.NextPageToken;
-            }
-
-            return result;
         }
 
         /// <summary>
