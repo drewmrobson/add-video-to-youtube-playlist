@@ -13,23 +13,25 @@ I'm a big consumer of YouTube, and found myself manually adding videos from my s
 
 ## Dependencies
 
-## Running
-
 In order to run the solution, you will need two things.
 
 1. A credentials file in `C:/Source/credentials.json` for your YouTube API account.
 2. A channels file in `C:/Source/channels.json` listing your subscriptions and their corresponding target playlists.
 
-Then follow these steps:
+### Credentials file
+
+Follow [this guide](https://developers.google.com/workspace/guides/create-credentials#service-account) to create service account credentials. Save this file as `C:/Source/credentials.json`.
+
+## Running
+
+Follow these steps:
 
 ```bash
 git clone https://github.com/drewmrobson/add-video-to-youtube-playlist.git
 cd add-video-to-youtube-playlist/add-video-to-youtube-playlist
 dotnet run
 ```
-### Credentials file
 
-Follow [this guide](https://developers.google.com/workspace/guides/create-credentials#service-account) to create service account credentials. Save this file as `C:/Source/credentials.json`.
 
 ### Channels file 
 
