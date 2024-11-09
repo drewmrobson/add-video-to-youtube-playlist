@@ -22,10 +22,11 @@ In order to run the solution, you will need two things.
 
 Then follow these steps:
 
-1. `git clone https://github.com/drewmrobson/add-video-to-youtube-playlist.git`
-2. `cd add-video-to-youtube-playlist/add-video-to-youtube-playlist`
-3. `dotnet run`
-
+```bash
+git clone https://github.com/drewmrobson/add-video-to-youtube-playlist.git
+cd add-video-to-youtube-playlist/add-video-to-youtube-playlist
+dotnet run
+```
 ### Credentials file
 
 Follow [this guide](https://developers.google.com/workspace/guides/create-credentials#service-account) to create service account credentials. Save this file as `C:/Source/credentials.json`.
