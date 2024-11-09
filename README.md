@@ -1,11 +1,19 @@
 # add-video-to-youtube-playlist
 Add video(s) to YouTube Playlists from your YouTube Subscriptions.
 
-# Overview
+I built this dumb little app for myself and maybe you can find it useful too?
+
+- [Overview](#overview)
+- [Dependencies](#dependencies)
+- [Running](#running)
+
+## Overview
 
 I'm a big consumer of YouTube, and found myself manually adding videos from my subscriptions into various playlists for later consumption. There's no reason this should be a manual process, so I automated it.
 
-# Running
+## Dependencies
+
+## Running
 
 In order to run the solution, you will need two things.
 
@@ -18,11 +26,11 @@ Then follow these steps:
 2. `cd add-video-to-youtube-playlist/add-video-to-youtube-playlist`
 3. `dotnet run`
 
-## Credentials file
+### Credentials file
 
 Follow [this guide](https://developers.google.com/workspace/guides/create-credentials#service-account) to create service account credentials. Save this file as `C:/Source/credentials.json`.
 
-## Channels file 
+### Channels file 
 
 This file directs the app to add the specified number of videos from the specified subscription to the specified playlist. Note the playlist must already exist. Note this reads videos from the subscription by date descending.
 
