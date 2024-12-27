@@ -2,5 +2,4 @@
 using System.Text.Json;
 
 var channels = JsonSerializer.Deserialize<List<Channel>>(File.ReadAllText(@"C:/Source/channels.json"));
-AddVideoToYouTubePlaylist.RunAsync(channels).Wait();
-
+AddVideoToYouTubePlaylist.RunAsync(channels!).Wait();
